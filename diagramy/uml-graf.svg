@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <style>
+    .actor { fill: #e9ecef; stroke: #495057; stroke-width: 2px; }
+    .usecase { fill: #fff3cd; stroke: #856404; stroke-width: 2px; }
+    .title { font: bold 20px Arial, sans-serif; fill: #212529; }
+    .text { font: 14px Arial, sans-serif; fill: #212529; }
+    .line { stroke: #495057; stroke-width: 2px; fill: none; }
+  </style>
+
+  <text x="40" y="40" class="title">UML Use-Case Diagram - IS Šachové zápasy</text>
+
+  <g class="actor">
+    <rect x="40" y="100" width="180" height="90" rx="14" ry="14" />
+    <text x="130" y="140" class="title" text-anchor="middle">Admin</text>
+    <text x="130" y="160" class="text" text-anchor="middle">správa systému</text>
+  </g>
+
+  <g class="actor">
+    <rect x="40" y="230" width="180" height="90" rx="14" ry="14" />
+    <text x="130" y="270" class="title" text-anchor="middle">Organizátor</text>
+    <text x="130" y="290" class="text" text-anchor="middle">správa turnajů</text>
+  </g>
+
+  <g class="actor">
+    <rect x="40" y="360" width="180" height="90" rx="14" ry="14" />
+    <text x="130" y="400" class="title" text-anchor="middle">Hráč</text>
+    <text x="130" y="420" class="text" text-anchor="middle">účast v turnajích</text>
+  </g>
+
+  <g class="usecase">
+    <ellipse cx="550" cy="120" rx="190" ry="45" />
+    <text x="550" y="120" class="title" text-anchor="middle">Spravovat turnaj</text>
+    <text x="550" y="142" class="text" text-anchor="middle">vytvoření, změna, zrušení</text>
+  </g>
+
+  <g class="usecase">
+    <ellipse cx="550" cy="250" rx="190" ry="45" />
+    <text x="550" y="250" class="title" text-anchor="middle">Spravovat hráče</text>
+    <text x="550" y="272" class="text" text-anchor="middle">registrace, úprava profilu</text>
+  </g>
+
+  <g class="usecase">
+    <ellipse cx="550" cy="380" rx="190" ry="45" />
+    <text x="550" y="380" class="title" text-anchor="middle">Hrát zápas</text>
+    <text x="550" y="402" class="text" text-anchor="middle">plánování a vyhodnocení výsledků</text>
+  </g>
+
+  <g class="usecase">
+    <ellipse cx="550" cy="510" rx="190" ry="45" />
+    <text x="550" y="510" class="title" text-anchor="middle">Zobrazit výsledky</text>
+    <text x="550" y="532" class="text" text-anchor="middle">přehled výsledků a žebříček</text>
+  </g>
+
+  <g class="usecase">
+    <ellipse cx="550" cy="620" rx="190" ry="45" />
+    <text x="550" y="620" class="title" text-anchor="middle">Spravovat notifikace</text>
+    <text x="550" y="642" class="text" text-anchor="middle">upozornění hráčům a organizátorům</text>
+  </g>
+
+  <path d="M220 145 L360 145 L520 145" class="line" />
+  <path d="M220 145 L360 145 L520 260" class="line" />
+  <path d="M220 145 L360 145 L520 620" class="line" />
+
+  <path d="M220 280 L360 280 L520 145" class="line" />
+  <path d="M220 280 L360 280 L520 380" class="line" />
+  <path d="M220 280 L360 280 L520 500" class="line" />
+
+  <path d="M220 420 L360 420 L520 380" class="line" />
+  <path d="M220 420 L360 420 L520 500" class="line" />
+
+  <text x="320" y="700" class="text">Use-case diagram popisuje aktéry a hlavní služby systému, bez detailního třídního návrhu.</text>
+</svg>
