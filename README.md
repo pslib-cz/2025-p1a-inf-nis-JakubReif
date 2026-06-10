@@ -54,4 +54,5 @@ Informační systém pro správu a organizaci šachových turnajů. Zaměřuje s
 * **NFR03: Ochrana proti souběžným zápisům** – Zámek databáze při ukládání výsledků (zabraňuje tomu, aby konflikt dvou žádostí přepsal již zadaný výsledek).
 
 ## UML a diagramy
-- UML diagramy jsou v adresáři `diagramy/` (use-case a koncepční ER). Náhled: [index.html](index.html)
+- UML diagramy jsou v adresáři `diagramy/` a pokrývají role, funkce a akce, data a vztahy i technologie a nasazení.
+- Náhled je v [index.html](index.html).

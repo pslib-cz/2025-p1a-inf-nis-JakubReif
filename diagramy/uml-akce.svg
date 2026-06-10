@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="950" viewBox="0 0 1400 950">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#495057" />
+    </marker>
+    <style>
+      .bg { fill: #f1f3f5; }
+      .title { font: bold 22px Arial, sans-serif; fill: #212529; }
+      .node { fill: #ffffff; stroke: #495057; stroke-width: 2.5; }
+      .decision { fill: #fff3cd; stroke: #d63301; stroke-width: 2; }
+      .action { fill: #e7f5ff; stroke: #1864ab; stroke-width: 2; }
+      .end { fill: #f8f9fa; stroke: #212529; stroke-width: 3; }
+      .text { font: bold 13px Arial, sans-serif; fill: #212529; }
+      .small { font: 12px Arial, sans-serif; fill: #495057; }
+      .line { stroke: #495057; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .lane { fill: #ffffff; stroke: #ced4da; stroke-width: 2; }
+      .lane-label { font: bold 16px Arial, sans-serif; fill: #495057; }
+      .label-box { font: italic 12px Arial, sans-serif; fill: #d63301; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="950" class="bg" />
+  <text x="40" y="40" class="title">UML Activity Diagram - Procesní workflow turnaje</text>
+
+  <rect x="30" y="80" width="1340" height="240" class="lane" rx="8" />
+  <rect x="30" y="340" width="1340" height="340" class="lane" rx="8" />
+  <rect x="30" y="700" width="1340" height="210" class="lane" rx="8" />
+
+  <text x="50" y="110" class="lane-label">FÁZE 1: Příprava turnaje (Pre-Tournament)</text>
+  <text x="50" y="375" class="lane-label">FÁZE 2: Průběh a řízení kol (In-Tournament)</text>
+  <text x="50" y="735" class="lane-label">FÁZE 3: Uzavření a reporty (Post-Tournament)</text>
+
+  <path d="M 118 195 L 180 195" class="line" /> <path d="M 340 195 L 410 195" class="line" /> <path d="M 450 165 L 450 130 L 260 130 L 260 160" class="line" /> <path d="M 490 195 L 550 195" class="line" /> <path d="M 710 195 L 780 195" class="line" /> <path d="M 940 195 L 1010 195" class="line" /> <path d="M 1170 195 L 1240 195" class="line" /> <path d="M 1310 230 L 1310 395 L 160 395 L 160 420" class="line" /> 
+  
+  <path d="M 240 455 L 310 455" class="line" /> <path d="M 470 455 L 540 455" class="line" /> <path d="M 580 485 L 580 540" class="line" /> <path d="M 670 575 L 790 575 L 790 490" class="line" /> <path d="M 620 455 L 700 455" class="line" /> <path d="M 880 455 L 950 455" class="line" /> <path d="M 990 425 L 990 300 L 1090 300 L 1090 230" class="line" /> 
+  
+  <path d="M 1030 455 L 1100 455 L 1100 775 L 260 775 L 260 800" class="line" /> <path d="M 350 835 L 420 835" class="line" /> <path d="M 600 835 L 670 835" class="line" /> <path d="M 850 835 L 920 835" class="line" /> <text x="355" y="146" class="small" text-anchor="middle">Ne (Odeslat link)</text>
+  <text x="505" y="185" class="small">Ano</text>
+  <text x="590" y="520" class="small">Ne / Protest</text>
+  <text x="645" y="445" class="small">Ano</text>
+  <text x="1000" y="320" class="small">Ne (Další kolo)</text>
+  <text x="1110" y="480" class="small">Ano (Konec turnaje)</text>
+
+  <circle cx="100" cy="195" r="18" class="node" />
+  <circle cx="100" cy="195" r="7" fill="#495057" />
+
+  <rect x="180" y="160" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="260" y="195" class="text" text-anchor="middle">Registrace / Login</text>
+  <text x="260" y="212" class="small" text-anchor="middle">FR01, FR02</text>
+
+  <polygon points="450,165 490,195 450,225 410,195" class="decision" />
+  <text x="450" y="242" class="label-box" text-anchor="middle">Ověřen?</text>
+
+  <rect x="550" y="160" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="630" y="195" class="text" text-anchor="middle">Založení turnaje</text>
+  <text x="630" y="212" class="small" text-anchor="middle">Kritéria FR03</text>
+
+  <rect x="780" y="160" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="860" y="195" class="text" text-anchor="middle">Startovní listina</text>
+  <text x="860" y="212" class="small" text-anchor="middle">Schválení FR04</text>
+
+  <rect x="1010" y="160" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="1090" y="195" class="text" text-anchor="middle">Generování kola</text>
+  <text x="1090" y="212" class="small" text-anchor="middle">Algoritmus FR06</text>
+
+  <rect x="1240" y="160" width="140" height="70" rx="10" ry="10" class="action" />
+  <text x="1310" y="195" class="text" text-anchor="middle">Publikace losu</text>
+  <text x="1310" y="212" class="small" text-anchor="middle">Notifikace FR12</text>
+
+  <rect x="80" y="420" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="160" y="455" class="text" text-anchor="middle">Odehrání partií</text>
+  <text x="160" y="472" class="small" text-anchor="middle">Hráči u stolů</text>
+
+  <rect x="310" y="420" width="160" height="70" rx="10" ry="10" class="action" />
+  <text x="390" y="455" class="text" text-anchor="middle">Zadání výsledku</text>
+  <text x="390" y="472" class="small" text-anchor="middle">FR08</text>
+
+  <polygon points="580,425 620,455 580,485 540,455" class="decision" />
+  <text x="580" y="415" class="label-box" text-anchor="middle">Potvrzeno?</text>
+
+  <rect x="490" y="540" width="180" height="70" rx="10" ry="10" class="action" />
+  <text x="580" y="575" class="text" text-anchor="middle">Zásah Rozhodčího</text>
+  <text x="580" y="592" class="small" style="fill:#d63301;" text-anchor="middle">Korekce FR08</text>
+
+  <rect x="700" y="420" width="180" height="70" rx="10" ry="10" class="action" />
+  <text x="790" y="455" class="text" text-anchor="middle">Přepočet pořadí</text>
+  <text x="790" y="472" class="small" text-anchor="middle">Průběžná tabulka FR11</text>
+
+  <polygon points="990,425 1030,455 990,485 950,455" class="decision" />
+  <text x="1005" y="420" class="label-box" text-anchor="start">Poslední kolo?</text>
+
+  <rect x="170" y="800" width="180" height="70" rx="10" ry="10" class="action" />
+  <text x="260" y="835" class="text" text-anchor="middle">Uzavření turnaje</text>
+  <text x="260" y="852" class="small" text-anchor="middle">Konečné tiebreaky</text>
+
+  <rect x="420" y="800" width="180" height="70" rx="10" ry="10" class="action" />
+  <text x="510" y="835" class="text" text-anchor="middle">Generování reportů</text>
+  <text x="510" y="852" class="small" text-anchor="middle">Export pro Svaz</text>
+
+  <rect x="670" y="800" width="180" height="70" rx="10" ry="10" class="action" />
+  <text x="760" y="835" class="text" text-anchor="middle">Export dat</text>
+  <text x="760" y="852" class="small" text-anchor="middle">PGN formát</text>
+
+  <circle cx="940" cy="835" r="18" class="end" />
+  <circle cx="940" cy="835" r="10" fill="#212529" />
+</svg>

@@ -3,20 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IS Šachové zápasy - UML graf</title>
+  <title>IS Šachové zápasy - UML diagramy</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 24px; background: #f5f5f5; color: #212529; }
-    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-    p { max-width: 800px; line-height: 1.6; }
-    .viewer { margin-top: 24px; border: 1px solid #ced4da; background: #fff; }
-    .viewer object { width: 100%; height: 820px; }
+    :root { color-scheme: light; }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: Arial, sans-serif;
+      color: #212529;
+      background:
+        radial-gradient(circle at top left, rgba(24, 100, 171, 0.12), transparent 30%),
+        linear-gradient(180deg, #f8f9fa 0%, #eef3f8 100%);
+    }
+    h1 { font-size: 2rem; margin: 0 0 0.35rem; }
+    p { max-width: 900px; line-height: 1.6; margin: 0 0 24px; }
+    .links { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 22px; }
+    .links a { color: #0b5cab; text-decoration: none; font-weight: 700; }
+    .links a:hover { text-decoration: underline; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #d6dde5;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(33, 37, 41, 0.08);
+      overflow: hidden;
+    }
+    .card h2 { font-size: 1.1rem; margin: 0; padding: 16px 18px 0; }
+    .card p { padding: 8px 18px 16px; margin: 0; color: #495057; }
+    .viewer { border-top: 1px solid #e6eaef; background: #fff; }
+    .viewer img { width: 100%; height: 460px; display: block; object-fit: contain; background: #fff; }
   </style>
 </head>
 <body>
   <h1>IS Šachové zápasy</h1>
-  <p>UML diagram pro inspiraci: znázorňuje hlavní aktéry a datové entity systému šachových turnajů.</p>
-  <div class="viewer">
-    <object type="image/svg+xml" data="diagramy/uml-graf.svg">Váš prohlížeč nepodporuje zobrazení SVG.</object>
+  <p>Čtyři UML diagramy podle README.</p>
+  <div class="links">
+    <a href="diagramy/uml-role.svg">Role</a>
+    <a href="diagramy/uml-akce.svg">Funkce a akce</a>
+    <a href="diagramy/uml-data.svg">Data a vztahy</a>
+    <a href="diagramy/uml-nasazeni.svg">Technologie a nasazení</a>
+  </div>
+  <div class="grid">
+    <section class="card">
+      <h2>Role</h2>
+      <p>Role a akce.</p>
+      <div class="viewer">
+        <img src="diagramy/uml-role.svg" alt="Use-case diagram rolí" />
+      </div>
+    </section>
+    <section class="card">
+      <h2>Funkce a akce</h2>
+      <p>Hlavní workflow.</p>
+      <div class="viewer">
+        <img src="diagramy/uml-akce.svg" alt="Activity diagram funkcí a akcí" />
+      </div>
+    </section>
+    <section class="card">
+      <h2>Data a vztahy</h2>
+      <p>ER model.</p>
+      <div class="viewer">
+        <img src="diagramy/uml-data.svg" alt="Class diagram dat a vztahů" />
+      </div>
+    </section>
+    <section class="card">
+      <h2>Technologie a nasazení</h2>
+      <p>Nasazení.</p>
+      <div class="viewer">
+        <img src="diagramy/uml-nasazeni.svg" alt="Deployment diagram technologií a nasazení" />
+      </div>
+    </section>
   </div>
 </body>
 </html>
