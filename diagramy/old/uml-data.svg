@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+  <defs>
+    <style>
+      .bg { fill: #f8f9fa; }
+      .title { font: bold 22px Arial, sans-serif; fill: #212529; }
+      .class-box { fill: #ffffff; stroke: #1864ab; stroke-width: 2; rx: 6; ry: 6; }
+      .enum-box { fill: #fff3cd; stroke: #8a6d3b; stroke-width: 2; rx: 6; ry: 6; }
+      .header { font: bold 14px Arial, sans-serif; fill: #212529; }
+      .attribute { font: 12px Courier, monospace; fill: #212529; }
+      .type { fill: #495057; font-weight: bold; }
+      .line { stroke: #495057; stroke-width: 1.8; fill: none; }
+      .cardinality { font: bold 12px Arial, sans-serif; fill: #1864ab; }
+      .separator { stroke: #ced4da; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="1500" height="1000" class="bg" />
+  <text x="40" y="45" class="title">UML Class Diagram - Datový model systému</text>
+
+  <g transform="translate(40, 100)">
+    <rect width="220" height="120" class="enum-box" />
+    <text x="110" y="25" class="header" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+    <text x="110" y="45" class="header" text-anchor="middle">UserRole</text>
+    <line x1="0" y1="55" x2="220" y2="55" class="separator" />
+    <text x="15" y="75" class="attribute">HOST</text>
+    <text x="15" y="90" class="attribute">PLAYER</text>
+    <text x="15" y="105" class="attribute">ARBITER / ADMIN</text>
+  </g>
+
+  <g transform="translate(40, 280)">
+    <rect width="280" height="200" class="class-box" />
+    <text x="140" y="25" class="header" text-anchor="middle">Uživatel</text>
+    <line x1="0" y1="35" x2="280" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- id: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="72" class="attribute">- jmeno: <tspan class="type">String</tspan></text>
+    <text x="15" y="89" class="attribute">- email: <tspan class="type">String</tspan></text>
+    <text x="15" y="106" class="attribute">- passwordHash: <tspan class="type">String</tspan></text>
+    <text x="15" y="123" class="attribute">- eloNational: <tspan class="type">Integer</tspan></text>
+    <text x="15" y="140" class="attribute">- fideId: <tspan class="type">String [0..1]</tspan></text>
+    <text x="15" y="157" class="attribute">- klub: <tspan class="type">String</tspan></text>
+    <text x="15" y="174" class="attribute">- isVerified: <tspan class="type">Boolean</tspan></text>
+  </g>
+
+  <g transform="translate(440, 295)">
+    <rect width="260" height="150" class="class-box" />
+    <text x="130" y="25" class="header" text-anchor="middle">Přihláška (Registration)</text>
+    <line x1="0" y1="35" x2="260" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- id: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="75" class="attribute">- userId: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="95" class="attribute">- tournamentId: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="115" class="attribute">- isApproved: <tspan class="type">Boolean</tspan></text>
+    <text x="15" y="135" class="attribute">- startingRank: <tspan class="type">Integer</tspan></text>
+  </g>
+
+  <g transform="translate(820, 250)">
+    <rect width="300" height="230" class="class-box" />
+    <text x="150" y="25" class="header" text-anchor="middle">Turnaj (Tournament)</text>
+    <line x1="0" y1="35" x2="300" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- id: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="72" class="attribute">- nazev: <tspan class="type">String</tspan></text>
+    <text x="15" y="89" class="attribute">- datum: <tspan class="type">DateTime</tspan></text>
+    <text x="15" y="106" class="attribute">- kapacita: <tspan class="type">Integer</tspan></text>
+    <text x="15" y="123" class="attribute">- system: <tspan class="type">TournamentSystem</tspan></text>
+    <text x="15" y="140" class="attribute">- tempo: <tspan class="type">TimeControl</tspan></text>
+    <text x="15" y="157" class="attribute">- celkemKol: <tspan class="type">Integer</tspan></text>
+    <text x="15" y="174" class="attribute">- tieBreaks: <tspan class="type">List&lt;String&gt;</tspan></text>
+    <text x="15" y="191" class="attribute">- creatorId: <tspan class="type">UUID</tspan></text>
+  </g>
+
+  <g transform="translate(820, 580)">
+    <rect width="280" height="130" class="class-box" />
+    <text x="140" y="25" class="header" text-anchor="middle">Kolo (Round)</text>
+    <line x1="0" y1="35" x2="280" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- id: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="75" class="attribute">- cisloKola: <tspan class="type">Integer</tspan></text>
+    <text x="15" y="95" class="attribute">- isPublished: <tspan class="type">Boolean</tspan></text>
+    <text x="15" y="115" class="attribute">- isClosed: <tspan class="type">Boolean</tspan></text>
+  </g>
+
+  <g transform="translate(420, 560)">
+    <rect width="290" height="170" class="class-box" />
+    <text x="145" y="25" class="header" text-anchor="middle">Zápas (Match)</text>
+    <line x1="0" y1="35" x2="290" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- id: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="72" class="attribute">- cisloStolu: <tspan class="type">Integer</tspan></text>
+    <text x="15" y="89" class="attribute">- whitePlayerId: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="106" class="attribute">- blackPlayerId: <tspan class="type">UUID</tspan></text>
+    <text x="15" y="123" class="attribute">- resultStatus: <tspan class="type">ResultEnum</tspan></text>
+    <text x="15" y="140" class="attribute">- protestNote: <tspan class="type">String [0..1]</tspan></text>
+  </g>
+
+  <g transform="translate(40, 580)">
+    <rect width="280" height="140" class="class-box" />
+    <text x="140" y="25" class="header" text-anchor="middle">TabulkaPořadí (Standing)</text>
+    <line x1="0" y1="35" x2="280" y2="35" class="separator" />
+    <text x="15" y="55" class="attribute">- body: <tspan class="type">Float</tspan></text>
+    <text x="15" y="75" class="attribute">- bucholz: <tspan class="type">Float</tspan></text>
+    <text x="15" y="95" class="attribute">- sonneborn: <tspan class="type">Float</tspan></text>
+    <text x="15" y="115" class="attribute">- pocetVyher: <tspan class="type">Integer</tspan></text>
+  </g>
+
+  <line x1="320" y1="370" x2="440" y2="370" class="line" />
+  <text x="330" y="360" class="cardinality">1</text>
+  <text x="410" y="360" class="cardinality">0..*</text>
+
+  <line x1="700" y1="370" x2="820" y2="370" class="line" />
+  <text x="710" y="360" class="cardinality">0..*</text>
+  <text x="800" y="360" class="cardinality">1</text>
+
+  <line x1="960" y1="480" x2="960" y2="580" class="line" />
+  <text x="970" y="505" class="cardinality">1</text>
+  <text x="970" y="560" class="cardinality">1..*</text>
+
+  <line x1="820" y1="645" x2="710" y2="645" class="line" />
+  <text x="800" y="635" class="cardinality">1</text>
+  <text x="725" y="635" class="cardinality">1..*</text>
+
+  <line x1="420" y1="650" x2="320" y2="650" class="line" />
+</svg>

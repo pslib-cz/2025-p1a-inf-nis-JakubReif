@@ -1,0 +1,53 @@
+@startuml Diagram rolí a případů užití
+
+skinparam actorStyle awesome
+skinparam defaultFontName Arial
+skinparam usecase {
+  BackgroundColor #FFF3CD
+  BorderColor #856404
+}
+skinparam actor {
+  BackgroundColor #E9ECEF
+  BorderColor #343A40
+}
+
+title "Use Case Diagram – Role a případy užití"
+
+actor "Host" as Host
+actor "Hráč" as Player
+actor "Organizátor / Rozhodčí" as Org
+actor "Admin" as Admin
+
+Host    <|-- Player
+Player  <|-- Org
+Org     <|-- Admin
+
+rectangle "IS Šachové zápasy" {
+  usecase "Prohlížet turnaje a výsledky" as UC1
+  usecase "Registrovat se a přihlásit" as UC2
+  usecase "Spravovat profil (ELO, FIDE ID)" as UC3
+  usecase "Přihlásit se do turnaje" as UC4
+  usecase "Zadat a potvrdit výsledek zápasu" as UC5
+  usecase "Podat protest k zápasu" as UC6
+  usecase "Založit turnaj" as UC7
+  usecase "Spravovat startovní listinu" as UC8
+  usecase "Generovat a publikovat kolo" as UC9
+  usecase "Opravit párování / řešit kontumaci" as UC10
+  usecase "Exportovat výsledky (CSV, PGN)" as UC11
+  usecase "Spravovat uživatele a systém" as UC12
+}
+
+Host  --> UC1
+Player --> UC2
+Player --> UC3
+Player --> UC4
+Player --> UC5
+Player --> UC6
+Org   --> UC7
+Org   --> UC8
+Org   --> UC9
+Org   --> UC10
+Org   --> UC11
+Admin --> UC12
+
+@enduml

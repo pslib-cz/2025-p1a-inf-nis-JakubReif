@@ -1,0 +1,39 @@
+@startuml Diagram nasazení
+
+skinparam defaultFontName Arial
+skinparam node {
+  BackgroundColor #E9ECEF
+  BorderColor     #343A40
+}
+skinparam component {
+  BackgroundColor #E7F5FF
+  BorderColor     #1864AB
+}
+skinparam database {
+  BackgroundColor #FFF3CD
+  BorderColor     #856404
+}
+
+title "Diagram nasazení – IS Šachové zápasy"
+
+node "Prohlížeč (PC / mobil)" as Browser <<device>> {
+  component "Webová aplikace\n(React, Tailwind CSS)" as FE
+}
+
+node "Aplikační server\n(Render.com / Docker)" as AppServer <<server>> {
+  component "Backend API\n(Node.js)" as BE
+  component "Párovací engine\n(Swiss / každý s každým)" as Engine
+}
+
+node "Databázový server\n(Supabase Cloud)" as DBServer <<server>> {
+  database "PostgreSQL" as DB
+}
+
+Browser    --> AppServer : HTTPS (REST/JSON)
+AppServer  --> DBServer  : SQL přes SSL
+
+note right of FE     : NFR01 – responzivní UI\npro mobilní zařízení
+note right of Engine : NFR02 – párování\ndo 3 s pro 100+ hráčů
+note right of DB     : NFR03 – zámky při\nzápisu výsledků
+
+@enduml

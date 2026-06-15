@@ -1,0 +1,69 @@
+@startuml Sekvenční diagram – průběh turnaje
+
+skinparam defaultFontName Arial
+skinparam sequence {
+  ActorBorderColor       #343A40
+  ActorBackgroundColor   #E9ECEF
+  ParticipantBorderColor #1864AB
+  ParticipantBackgroundColor #E7F5FF
+  ArrowColor             #495057
+}
+
+title "Sekvenční diagram – Životní cyklus turnaje"
+
+actor "Hráč"            as Player
+actor "Organizátor"     as Org
+participant "Systém"    as Sys  #E7F5FF
+database "Databáze"     as DB   #FFF3CD
+
+== Příprava turnaje ==
+
+Player -> Sys : Registrace (jméno, e-mail, heslo)
+Sys    -> DB  : Uložit uživatele
+Sys   --> Player : Ověřovací e-mail
+
+Player -> Sys : Přihlášení
+Sys    -> DB  : Ověřit přihlašovací údaje
+Sys   --> Player : Přihlášen (role: hráč)
+
+Org    -> Sys : Vytvořit turnaj (systém, tempo, kola)
+Sys    -> DB  : Uložit turnaj
+Sys   --> Org : Turnaj vytvořen
+
+Player -> Sys : Přihlásit se do turnaje
+Sys    -> DB  : Uložit přihlášku (stav: čeká)
+Org    -> Sys : Schválit přihlášku hráče
+Sys    -> DB  : Aktualizovat přihlášku (stav: schválena)
+
+== Průběh kola ==
+
+Org    -> Sys : Generovat kolo N
+Sys    -> DB  : Načíst hráče a historii zápasů
+Sys    -> Sys : Vypočítat párování\n(Swiss / každý s každým)
+Sys    -> DB  : Uložit kolo a zápasy
+Org    -> Sys : Zveřejnit kolo
+Sys   --> Player : Notifikace (stůl č., barva figur)
+
+Player -> Sys : Zadat výsledek (1-0 / 0-1 / ½-½)
+Sys    -> DB  : Uložit výsledek (čeká na potvrzení)
+
+alt Druhý hráč potvrdí výsledek
+  Player -> Sys : Potvrdit výsledek
+  Sys    -> DB  : Označit výsledek jako potvrzený
+else Protest – zasáhne Organizátor
+  Player -> Sys : Podat protest
+  Org    -> Sys : Rozhodnout (kontumace)
+  Sys    -> DB  : Uložit opravený výsledek
+end
+
+Sys    -> DB  : Přepočítat pořadí (Buchholz, Sonneborn-Berger)
+Sys   --> Player : Zobrazit průběžnou tabulku
+
+== Uzavření turnaje ==
+
+Org    -> Sys : Uzavřít turnaj
+Sys    -> DB  : Vypočítat finální pořadí a tiebreaky
+Org    -> Sys : Exportovat výsledky
+Sys   --> Org : Soubor CSV / PGN
+
+@enduml

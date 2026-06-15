@@ -1,0 +1,89 @@
+@startuml ER Diagram – datový model
+
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+title "ER Diagram – IS Šachové zápasy"
+
+entity "Uživatel" as user {
+  * id : UUID <<PK>>
+  --
+  * jmeno : String
+  * email : String
+  * heslo_hash : String
+  * role : ENUM(host, hráč, organizátor, rozhodčí, admin)
+  elo_narodni : Integer
+  fide_id : String
+  klub : String
+  * overeno : Boolean
+}
+
+entity "Turnaj" as tournament {
+  * id : UUID <<PK>>
+  --
+  * nazev : String
+  * datum_zahajeni : DateTime
+  * kapacita : Integer
+  * system : ENUM(swiss, round_robin)
+  * tempo : ENUM(standard, rapid, blitz)
+  * pocet_kol : Integer
+  tiebreaky : String
+  * stav : ENUM(plánovaný, registrace, probíhá, uzavřen)
+  organizator_id : UUID <<FK>>
+}
+
+entity "Přihláška" as reg {
+  * id : UUID <<PK>>
+  --
+  * hrac_id : UUID <<FK>>
+  * turnaj_id : UUID <<FK>>
+  * stav : ENUM(čeká, schválena, zamítnuta, odstoupil)
+  startovni_poradi : Integer
+  * datum : DateTime
+}
+
+entity "Kolo" as round {
+  * id : UUID <<PK>>
+  --
+  * turnaj_id : UUID <<FK>>
+  * cislo_kola : Integer
+  * zverejneno : Boolean
+  * uzavreno : Boolean
+}
+
+entity "Zápas" as match {
+  * id : UUID <<PK>>
+  --
+  * kolo_id : UUID <<FK>>
+  * hrac_bily_id : UUID <<FK>>
+  * hrac_cerny_id : UUID <<FK>>
+  cislo_stolu : Integer
+  * vysledek : ENUM(1-0, 0-1, ½-½, +-, -+, 0-0, nesehran)
+  * potvrzen : Boolean
+  protest_poznamka : String
+}
+
+entity "Pořadí" as standing {
+  * id : UUID <<PK>>
+  --
+  * turnaj_id : UUID <<FK>>
+  * hrac_id : UUID <<FK>>
+  * body : Float
+  buchholz : Float
+  sonneborn_berger : Float
+  * pocet_vyher : Integer
+  poradi : Integer
+}
+
+' Vztahy
+user        ||--o{ tournament  : "zakládá"
+user        ||--o{ reg         : "podává"
+tournament  ||--o{ reg         : "eviduje"
+tournament  ||--o{ round       : "obsahuje"
+round       ||--o{ match       : "obsahuje"
+user        ||--o{ match       : "hraje (bílý)"
+user        ||--o{ match       : "hraje (černý)"
+tournament  ||--o{ standing    : "má pořadí"
+user        ||--o{ standing    : "figuruje v"
+
+@enduml
